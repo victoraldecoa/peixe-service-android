@@ -12,18 +12,15 @@ Para incluí-la em seu projeto
 
 2- Instale o Git:
  - http://git-scm.com/
+ 
+3- Baixe o projeto:
+ git clone https://github.com/victoraldecoa/peixe-service-android.git
 
-3- Configure o projeto peixe-android-services
+4- Configure o projeto peixe-android-services
 
  - No Eclipse, clique File, New, Other
  - Na janela que abrir, expanda "Android" e selecione "Android Project from Existing Code"
  - Procure por peixe-services-android/peixe-services-android
- - No Package Explorer, clique com o direito no projeto criado, clique "Properties"
- - Clique Android
- - Selecione o Target mais recente que tiver
- - Cheque a caixa "Is Library"
- - Clique em Java Build Path, Libraries, Add JARs...
- - Expanda o projeto que você acabou de criar, libs, e adicione todos os JARs
 
 5- Crie um novo projeto Android
  - No Eclipse, File, New, Other, Android, Android Application Project
