@@ -14,6 +14,7 @@ Para incluí-la em seu projeto
  - http://git-scm.com/
  
 3- Baixe o projeto:
+
     git clone https://github.com/victoraldecoa/peixe-service-android.git
 
 4- Configure o projeto peixe-android-services
