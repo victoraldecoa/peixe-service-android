@@ -109,6 +109,8 @@ public class UpDownService {
 			androidHttpTransport.call(SOAP_ACTION, envelope);
 		} catch (ConnectException e) {
 			throw new IOException("KSOAP2: No connection");
+		} catch (java.net.SocketTimeoutException e) {
+			throw new IOException("KSOAP2: No connection");
 		}
 		
 		int[] resultado = new int[102];
