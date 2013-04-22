@@ -44,24 +44,23 @@ public class CardapioService {
 	public boolean noConnection = false;
 	
 	// Variáveis do WebService
-	public Cardapio central;
-	public Cardapio quimica;
-	public Cardapio fisica;
-	public Cardapio prefeitura;
+	private Cardapio central;
+	private Cardapio quimica;
+	private Cardapio fisica;
+	private Cardapio prefeitura;
 
 	/**
 	 * Id sequencial da requisição WS. "-1" significa que não tem nada no cache. (se tiver algo,
 	 * está codificado para colocar o valor "atual" do cache)
 	 */
-	public int atual = -1;
-	public int code = -1;
-	public String message = null;
+	private int atual = -1;
+	private int code = -1;
+	private String message = null;
 	
 	// Fim das variáveis do webservice
 
 	private final static String URL = "http://peixe-aws.no-ip.org/cardapio";
 	private Calendar data;
-	private boolean _hasUpdate = false;
 	
 	private static CardapioService instance = null;
 	
@@ -74,18 +73,13 @@ public class CardapioService {
 		return instance;
 	}
 	
-	public boolean hasUpdate() {
-		return _hasUpdate;
-	}
-	
 	/**
 	 * 
 	 * @param input getResources().openRawResource(R.raw.cardapiosLocal) - Versão local do json
 	 * @return
 	 * @throws Exception
 	 */
-	public void updateCardapios(Activity context, FileInputStream input) throws CardapioException {
-		_hasUpdate = true;
+	public CardapioCompleto updateCardapios(Activity context, FileInputStream input) throws CardapioException {
 		noConnection = false;
 		
 		// Algumas pessoas tiveram problemas por causa do relógio mal ajustado no celular.
@@ -98,6 +92,16 @@ public class CardapioService {
 			//throw new CardapioException("Não foi possível encontrar uma conexão");
 			noConnection = true;
 		}
+		
+		CardapioCompleto resultado = new CardapioCompleto();
+		resultado.central = central;
+		resultado.fisica = fisica;
+		resultado.prefeitura = prefeitura;
+		resultado.quimica = quimica;
+		resultado.mensagem = message;
+		resultado.semConexao = noConnection;
+		resultado.ehCacheAtual = isCacheAtual();
+		return resultado;
 	}
 		
 	/**
